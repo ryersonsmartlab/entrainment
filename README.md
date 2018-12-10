@@ -2,41 +2,35 @@
 
 These MATLAB scripts were used for a project measuring neural entrainment using EEG. I have put them here with the hope that they will be useful to others interested in analyzing EEG data. They can be used as a template for another analysis or for inspiration. Many of the scripts can be used outside of this project (see the [General EEG Analysis](#analysis-functions-general-analysis) section).
 
-The `analysis` folder is a combination of wrapper scripts for [EEGLAB](https://sccn.ucsd.edu/eeglab/index.php) (mostly for preprocessing), and custom functions for selecting independent components by location and measuring entrainment. The `task` folder is for presenting stimuli on a Windows computer, and was used to send port codes to a BioSemi EEG recording system.
+The `analysis` folder is a combination of wrapper scripts for [EEGLAB](https://sccn.ucsd.edu/eeglab/index.php) (mostly for preprocessing), and custom functions for selecting independent components by location and measuring entrainment.
 
 ## Table of Contents
 
-1. [Analysis](#analysis)
-    1. [Explanation of the Method](#analysis-explanation-of-the-method)
-    2. [Running the Analysis](#analysis-running-the-analysis)
-        1. [The Project Folder](#analysis-the-project-folder)
-        2. [The Diary File](#analysis-the-diary-file)
-        3. [Running the Whole Pipeline](#analysis-running-the-whole-pipeline)
-    3. [List of Analysis Functions](#analysis-list-of-analysis-functions)
-        1. [Project Macros](#analysis-functions-project-macros)
-        2. [Project Utilities](#analysis-functions-project-utilities)
-        3. [Project Analysis](#analysis-functions-project-analysis)
-        4. [General Analysis](#analysis-functions-general-analysis)
-2. [Task](#task)
-3. [MATLAB](#matlab)
-
-<a name="analysis">
-
-## Analysis
+1. [Explanation of the Method](#analysis-explanation-of-the-method)
+2. [Running the Analysis](#analysis-running-the-analysis)
+    1. [The Project Folder](#analysis-the-project-folder)
+    2. [The Diary File](#analysis-the-diary-file)
+    3. [Running the Whole Pipeline](#analysis-running-the-whole-pipeline)
+3. [List of Analysis Functions](#analysis-list-of-analysis-functions)
+    1. [Project Macros](#analysis-functions-project-macros)
+    2. [Project Utilities](#analysis-functions-project-utilities)
+    3. [Project Analysis](#analysis-functions-project-analysis)
+    4. [General Analysis](#analysis-functions-general-analysis)
+4. [MATLAB](#matlab)
 
 <a name="analysis-explanation-of-the-method">
 
-### Explanation of the Method
+## Explanation of the Method
 
 Coming soon...
 
 <a name="analysis-running-the-pipeline">
 
-### Running the Analysis
+## Running the Analysis
 
 <a name="analysis-the-project-folder"></a>
 
-#### The Project Folder
+### The Project Folder
 
 The function `getpath` is used to access all required directory paths and files for the rest of the scripts in this toolbox (except for the [General EEG Analysis](#analysis-functions-general-analysis) functions, which don't require any external paths or files). Paths can be edited, added, or removed from that function as needed. Here is the folder structure for the current project, with some example filenames:
 
@@ -69,7 +63,7 @@ Note: the task scripts save the logfiles in the task/logfiles folder; these file
 
 <a name="analysis-the-diary-file"></a>
 
-#### The Diary File
+### The Diary File
 
 The diary.csv file can be considered a sort of configuration file for the analysis. It should contain the following columns, with each row representing a single participant:
 
@@ -95,7 +89,7 @@ The diary.csv file can be considered a sort of configuration file for the analys
 
 <a name="analysis-running-the-whole-pipeline"></a>
 
-#### Running the Whole Pipeline
+### Running the Whole Pipeline
 
 The following code will run the entire analysis pipeline from raw data files to a tabular data frame of entrainment values.
 
@@ -113,13 +107,13 @@ en_writetable('entrainment.csv') % write all data in tabular format to a csv fil
 
 <a name="analysis-list-of-analysis-functions"></a>
 
-### List of Analysis Functions
+## List of Analysis Functions
 
 Each function list is loosely in the order that they would be used in the processing pipeline.
 
 <a name="analysis-functions-project-macros"></a>
 
-#### Project Macros
+### Project Macros
 
 Perform a whole section of the analysis pipeline and batch processing. These mostly contain calls to the other functions in the lists below.
 
@@ -134,7 +128,7 @@ Perform a whole section of the analysis pipeline and batch processing. These mos
 
 <a name="analysis-functions-project-utilities"></a>
 
-#### Project Utilities
+### Project Utilities
 
 Simplify finding and loading files.
 
@@ -146,7 +140,7 @@ Simplify finding and loading files.
 
 <a name="analysis-functions-project-analysis"></a>
 
-#### Project Analysis
+### Project Analysis
 
 These include wrappers on EEGLAB functions (mostly EEG preprocessing) and custom scripts for spectral analyses.
 
@@ -158,7 +152,7 @@ These include wrappers on EEGLAB functions (mostly EEG preprocessing) and custom
 
 <a name="analysis-functions-general-analysis"></a>
 
-#### General Analysis
+### General Analysis
 
 Some mostly EEG-related functions for preprocessing and spectral analysis that will work outside of this project.
 
@@ -175,12 +169,6 @@ Some mostly EEG-related functions for preprocessing and spectral analysis that w
 | `getbins3`                | Given some data and a vector of labels, get the value (or mean/max/min) of data for specified labels. This is used to get the max spectral value at a given frequency.                                                                            |
 | `findAudioMarkers`        | Look through an audio file and return the onset times in samples. This file is adapted from [PHZLAB](https://github.com/gabenespoli/phzlab).                                                                                                      |
 | `eeg_entrainment`         | Takes an EEG struct and a beat frequency, and returns entrainment values for components that are localized to specified regions.                                                                                                                  |
-
-<a name="task"></a>
-
-## Task
-
-Please see the documentation included in each of the functions in the task folder for an explanation of how they work.
 
 <a name="matlab"></a>
 
