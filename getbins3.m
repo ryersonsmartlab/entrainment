@@ -110,7 +110,7 @@ for i = 1:length(ind)
         tempind = ind(i)-width:ind(i)+width;
 
     elseif cwidth < width % mean of only surrounding bins
-        farbound = width+cwidth-1;
+        farbound = width+cwidth; 
         tempind = [ind(i)-farbound:ind(i)-cwidth, ...
             ind(i)+cwidth:ind(i)+farbound];
 
