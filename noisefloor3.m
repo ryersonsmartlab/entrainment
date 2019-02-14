@@ -25,7 +25,7 @@ if nargin < 3 | f == 0, f = []; end
 if nargin < 4, verbose = false; end
 
 if ~isempty(f) && (length(f) ~= size(x, 2))
-    error('F must be the same length as size(EEG.data,2).')
+    error('F must be the same length as size(x, 2).')
 end
 
 switch length(bins)
