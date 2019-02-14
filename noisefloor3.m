@@ -20,8 +20,9 @@
 % Written by Gabe Nespoli 2014-02-27. Revised 2018-03-13.
 % Adapted from Nozaradan et al., 2011, Journal of Neuroscience.
 
-function [y, f] = noisefloor3(x, bins, f)
-if nargin < 3, f = []; end
+function [y, f] = noisefloor3(x, bins, f, verbose)
+if nargin < 3 | f == 0, f = []; end
+if nargin < 4, verbose = false; end
 
 if ~isempty(f) && (length(f) ~= size(x, 2))
     error('F must be the same length as size(EEG.data,2).')
