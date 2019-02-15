@@ -29,6 +29,7 @@
 %   'detrend'     = [true|false] Whether or not to remove the mean from the
 %                   signal before calculating the FFT. This is done twice:
 %                   before and after applying the window. Default true.
+%                   Requires detrend3.m.
 %
 %   'units'       = [string] The units of the data, to be adjusted if
 %                   power spectrum.
@@ -79,7 +80,7 @@ switch nfft
 end
 
 if do_detrend
-    data = detrend(data, 'constant');
+    data = detrend3(data, 'constant');
 end
 
 % windowing
@@ -115,7 +116,7 @@ win = repmat(win, [size(data, 1), 1, size(data, 3)]);
 data = data .* win;
 
 if do_detrend
-    data = detrend(data, 'constant');
+    data = detrend3(data, 'constant');
 end
 
 % do fft
