@@ -59,6 +59,9 @@ for comp = 1:size(x, 1)
         for i = 1+a+b:size(x, 2)-a-b % samples in current trial
             y(comp, i, trial) = x(comp, i, trial) - ...
                 mean(x(comp, [i-a-b:i-a-1, i+a+1:i+a+b], trial));
+    % a = 2, b = 2, i = 100
+    % 92  93  94  95  96  97  98  99 100 101 102 103 104 105 106 107 108
+    %                 x   x           i           x   x
         end
     end
     if verbose, fprintf(' Done.\n'), end

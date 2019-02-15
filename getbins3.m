@@ -108,11 +108,16 @@ for i = 1:length(ind)
 
     elseif isempty(cwidth) % mean of target bin and surrounding
         tempind = ind(i)-width:ind(i)+width;
+        %  95   96  97  98  99 100 101 102 103 104 105
+        %                   x   x   x
 
     elseif cwidth < width % mean of only surrounding bins
         farbound = width+cwidth; 
         tempind = [ind(i)-farbound:ind(i)-cwidth, ...
             ind(i)+cwidth:ind(i)+farbound];
+        % width = 1, cwidth = 2, farbound = 2, i = 100
+        %  95   96  97  98  99 100 101 102 103 104 105
+        %           x   x               x   x
 
     else
         error('Problem with width and cwidth input.')
