@@ -49,15 +49,19 @@ end
 % create output container
 y = nan(size(x));
 
-fprintf('Removing spectral noise floor (this may take a while)... ')
+fprintf('Removing spectral noise floor (this may take a while)... \n')
 for comp = 1:size(x, 1)
+    if verbose, fprintf('  comp %i ', comp), end
 
     for trial = 1:size(x, 3) % loop trials
+        if verbose, fprintf('.'), end % one dot per trial
+
         for i = 1+a+b:size(x, 2)-a-b % samples in current trial
             y(comp, i, trial) = x(comp, i, trial) - ...
                 mean(x(comp, [i-a-b:i-a-1, i+a+1:i+a+b], trial));
         end
     end
+    if verbose, fprintf(' Done.\n'), end
 end
 fprintf('Done.\n')
 
